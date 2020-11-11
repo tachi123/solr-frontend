@@ -1,0 +1,6 @@
+#Wed, 08 Jan 2020 12:02:55 -0300
+
+info.app.version=0.1
+info.app.name=sndg-interface
+grails.env=production
+info.app.grailsVersion=3.3.2
