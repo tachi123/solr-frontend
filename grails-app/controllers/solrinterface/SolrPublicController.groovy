@@ -1,5 +1,6 @@
 package solrinterface
 
+import grails.converters.JSON
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrQuery.ORDER;
@@ -16,11 +17,15 @@ class SolrPublicController {
 
     private static String solrUrl
     private static SolrClient solrCore
+    private static String solrFieldList
+    private static JSON solrSorts
 /*
     static allowedMethods = [searchRegistros: "GET"]*/
 
     public SolrPublicController() throws MalformedURLException, IOException, SolrServerException {
-        solrUrl = grailsApplication.config.solr.link.core
+        solrUrl = grailsApplication.config.solr.url
+        solrSorts = JSON.parse(grailsApplication.config.solr.sorts)
+        solrFieldList = grailsApplication.config.solr.fieldList
         solrCore = new HttpSolrClient.Builder(solrUrl).build()
     }
 
@@ -30,41 +35,92 @@ class SolrPublicController {
 
         String view
 
-        if (params.type == null || params.type == "null")
-            view = 'search'
-        else
-            view = 'searchTypeSelected'
+        if (params.q == null || params.q == "null")
+            view = 'search';
+        else {
+                view = 'searchTypeSelected'
 
-        SolrQuery query = buildQuery(params)
+                SolrQuery query = buildQuery(params)
 
-        QueryResponse rsp = solrCore.query(query);
+                QueryResponse rsp = solrCore.query(query);
+            //  No pude hacerlo funcionar para DynamicProperties
+            //  final List<Item> items = rsp.getBeans(Item.class);
+            //  Entonces procedo a agregar uno a uno
+                final SolrDocumentList documents = rsp.getResults();
+                final List<Item> items = convertDocumentsToItems(documents)
 
-        final List<Item> items = rsp.getBeans(Item.class);
+                String numFound = documents.getNumFound();
+                List<FacetField> facets = rsp.getFacetFields();
 
-        final SolrDocumentList documents = rsp.getResults();
+                //ESTO ASI SACO EL TYPE DE FACETSELECTED
+                query.removeFilterQuery("type:" + params.type)
 
-        String numFound = documents.getNumFound();
-
-        List<FacetField> facets = rsp.getFacetFields();
-
-        //ESTO ASI SACO EL TYPE DE FACETSELECTED
-        query.removeFilterQuery("type:" + params.type)
-
-        render view: view,
-                model: [items   : items,
-                        facets  : facets,
-                        type    : params.type,
-                        rows    : query.getRows(),
-                        start   : query.getStart(),
-                        sort: params.sort,
-                        fq      : query.getFilterQueries(),
-                        fqstring: query.getFilterQueries() != null ? query.getFilterQueries().join("|") : "",
-                        numFound: documents.getNumFound(),
-                        typeItem: params.typeItem,
-                        q       : query.getQuery().equals("text:*") ? "" : query.getQuery()]
+                render view: view,
+                        model: [items   : items,
+                                facets  : facets,
+                                type    : params.type,
+                                rows    : query.getRows(),
+                                start   : query.getStart(),
+                                sort: params.sort,
+                                fq      : query.getFilterQueries(),
+                                fqstring: query.getFilterQueries() != null ? query.getFilterQueries().join("|") : "",
+                                numFound: documents.getNumFound(),
+                                typeItem: params.typeItem,
+                                q       : query.getQuery().equals("text:*") ? "" : query.getQuery()]
+            }
     }
 
-    def searchCentros(Integer max) {
+    def buildQuery(params) {
+
+        String q = params.q != null && params.q.length() > 0 ? params.q : "*"
+        Integer start = params.start != null && params.start.size() > 0 ? Integer.parseInt(params.start) : 0
+        Integer rows = params.rows != null && params.rows.size() > 0 ? Integer.parseInt(params.rows) : 15
+        if (rows >50 ) rows = 50;
+
+        SolrQuery query = new SolrQuery();
+        query.setQuery(q);
+        query.setFields(solrFieldList)
+        query.setRows(rows);
+        query.set("defType", "edismax");
+        query.setFacetMinCount(2);
+        query.setIncludeScore(true);
+
+        if(params.sort != null && params.sort.size() > 0){
+            def order = ORDER.asc
+            for(elementSort in solrSorts.target)
+                if(elementSort.value.equals(params.sort) && elementSort.type.equals("desc")) order = ORDER.desc
+            query.setSort(params.sort,order)
+        }
+
+        if(params.pageNumber != null && Integer.parseInt(params.pageNumber) > 0)
+            start = (Integer.parseInt(params.pageNumber)-1)*rows
+        query.setStart(start)
+        if (params.fqstring != null && params.fqstring.size() > 0)
+            query.setFilterQueries(params.fqstring.split('\\|'))
+        if (params.newfq != null && params.newfq.size() > 0 && !params.fqstring.contains(params.newfq))
+            query.addFilterQuery(params.newfq)
+        if (params.delfq != null && params.delfq.size() > 0)
+            query.removeFilterQuery(params.delfq)
+        for (String facetAdd : grailsApplication.config.search.facets.enabled.split(","))
+            query.addFacetField(facetAdd);
+
+        return query
+    }
+
+    def convertDocumentsToItems(SolrDocumentList documents){
+        def List<Item> items = []
+        for(SolrDocument doc in documents){
+            Item itemInstance = new Item()
+            for(field in doc)
+                itemInstance.setProperty(field.getKey(), field.getValue())
+            items.add(itemInstance)
+        }
+        return items
+    }
+}
+
+
+/*    def searchCentros(Integer max) {
 
         params.fqstring = 'status:"Validado institucionalmente"'
         params.type = 30
@@ -86,52 +142,4 @@ class SolrPublicController {
                         sort: params.sort,
                         numFound: documents.getNumFound(),
                         q       : query.getQuery().equals("text:*") ? "" : query.getQuery()]
-    }
-
-
-    def buildQuery(params) {
-
-        String q = params.q != null && params.q.length() > 0 ? params.q : "*"
-        Integer start = params.start != null && params.start.size() > 0 ? Integer.parseInt(params.start) : 0
-        Integer rows = params.rows != null && params.rows.size() > 0 ? Integer.parseInt(params.rows) : 15
-
-        SolrQuery query = new SolrQuery();
-        query.setQuery(q);
-
-        if(params.sort != null && params.sort.size() > 0)
-            if(params.sort == "name")
-                query.setSort(params.sort+" ",ORDER.asc)
-            else
-                query.setSort(params.sort+" ",ORDER.desc)
-
-        if(params.pageNumber != null && Integer.parseInt(params.pageNumber) > 0)
-            start = (Integer.parseInt(params.pageNumber)-1)*rows
-
-        query.setStart(start)
-
-        query.setFacet(true);
-        if (params.type == null || params.type == "null") {
-            query.setRows(0);
-            query.addFacetField("type");
-        } else {
-            query.setRows(rows);
-            if (params.fqstring != null && params.fqstring.size() > 0)
-                query.setFilterQueries(params.fqstring.split('\\|'))
-            query.addFilterQuery("type:" + params.type)
-            if (params.newfq != null && params.newfq.size() > 0 && !params.fqstring.contains(params.newfq))
-                query.addFilterQuery(params.newfq)
-            if (params.delfq != null && params.delfq.size() > 0)
-                query.removeFilterQuery(params.delfq)
-            for (String facetAdd : grailsApplication.config.search.facets.enabled.split(","))
-                query.addFacetField(facetAdd);
-        }
-
-        query.set("defType", "edismax");
-        query.setFacetMinCount(2);
-        query.setIncludeScore(true);
-
-        //query.removeFilterQuery("type:" + params.type)
-
-        return query
-    }
-}
+    }*/

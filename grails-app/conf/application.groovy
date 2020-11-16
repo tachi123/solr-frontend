@@ -1,6 +1,3 @@
-//default_config = "/data/${appName}/config/${appName}-application.properties"
-//default_config = "C:\\data\\encuesta\\config\\encuesta-config.properties"
-
 default_configs = [
         "C:\\data\\$appName\\config\\$appName-application.yml",
         "C:\\data\\$appName\\config\\$appName-application.properties",
@@ -22,3 +19,4 @@ for(fileConfig in default_configs) {
 println "[${appName}] (*) grails.config.locations = ${grails.config.locations}"
 //println "default_config = ${default_config}"
 println "default_configs = ${default_configs}"
+

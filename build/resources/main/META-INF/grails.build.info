@@ -1,6 +1,6 @@
-#Wed, 08 Jan 2020 12:02:55 -0300
+#Wed, 11 Nov 2020 14:20:07 -0300
 
 info.app.version=0.1
-info.app.name=sndg-interface
+info.app.name=buscador-frontend
 grails.env=production
 info.app.grailsVersion=3.3.2

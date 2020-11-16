@@ -1,4 +1,4 @@
-<%@ page import="solrinterface.Item;solrinterface.DocSolrType" contentType="text/html;charset=UTF-8" %>
+<%@ page import="solrinterface.Item;" contentType="text/html;charset=UTF-8" %>
 <g:javascript library="jquery"/>
 <!DOCTYPE html>
 <html>
@@ -7,10 +7,10 @@
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
-        <g:set var="titleType" value=" ${message(code: 'section.'+(type != null ? solrinterface.DocSolrType.getById(Integer.parseInt(type)).getKey() : 'ALL')+'.display',args: [])}"/>
+        <g:set var="titleType" value=" ${message(code: 'skin.coreDisplay',args: [])}"/>
         <g:set var="descriptionType" value="${this.q != null && this.q.size() > 0 ? message(code: 'section.search.terminoBuscado',args: [this.q]) : ''}"/>
-        <g:set var="urlImgSection" value="${evaluate('grailsApplication.config.section.'+(type != null ? solrinterface.DocSolrType.getById(Integer.parseInt(type)).getKey() : 'DEFAULT')+'.urlImg')}"></g:set>
-        <g:set var="colorClass" value="${evaluate('grailsApplication.config.section.'+(type != null ? solrinterface.DocSolrType.getById(Integer.parseInt(type)).getKey() : 'DEFAULT')+'.color')}"></g:set>
+        <g:set var="urlImgSection" value="${evaluate('grailsApplication.config.section.DEFAULT.urlImg')}"></g:set>
+        <g:set var="colorClass" value="${evaluate('grailsApplication.config.section.DEFAULT.color')}"></g:set>
         <g:render template="searchBox"
                   model="[colorClass: colorClass,urlImg:urlImgSection,title:titleType, description: descriptionType, displayActive: titleType]"/>
     <div class="container" role="main">
@@ -90,7 +90,7 @@
                         </div>
                     </div>
                     <br/>
-                    <g:render template="item"  var="myItem" collection="${this.items}" typeItem="${this.typeItem}"/>
+                    <g:render template="item"  var="myItem" collection="${this.items}"/>
 
                     <div class="text-center">
                         <g:render template="pagination"  model="[pageCant:pageCant,pageActual:pageActual]"/>

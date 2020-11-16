@@ -1,21 +1,9 @@
 package solrinterface
 
 public enum DocSolrType implements org.springframework.context.MessageSourceResolvable{
-	PUBLICATION(0),
-	BIOPROJECT(1),
-	SEQUENCE(2),
-	ASSEMBLY(3),
-	GENOME(4),
-	READS(5),
-	STRUCTURE(6),
-	EXPRESSION(7),
-	BARCODE(8),
-	SAMPLE(9),
-	TOOL(10),
-	ORGANIZATION(30),
-	PERSON(20),
-	PROTEIN(40),
-	UNPROCESSED(50)
+
+	PERSONA(0),
+	PROYECTO(1)
 
 	final int id;
 	

@@ -5,7 +5,7 @@
     <title>${ title }</title>
 </head>
 <body>
-	<g:set var="urlImgSection" value="${evaluate('grailsApplication.config.section.ESTADISTICAS.urlImg')}"></g:set>
+%{--	<g:set var="urlImgSection" value="${evaluate('grailsApplication.config.section.ESTADISTICAS.urlImg')}"></g:set>
 	<g:render template="/solrPublic/searchBox"
 			  model="[urlImg:urlImgSection,title: this.title, description: '',buscadorEnabled: false, displayActive: this.title]"
 	/>
@@ -41,5 +41,5 @@
 	
 	        </div>
 		</section>
-	</main>
+	</main>--}%
 </body>

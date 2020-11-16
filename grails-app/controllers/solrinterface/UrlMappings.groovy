@@ -2,6 +2,14 @@ package solrinterface
 
 class UrlMappings {
 
+/*    static excludes = [
+            '/css/*',
+            '/fonts/*',
+            '/static/*',
+            '/asset-manifest.json',
+            '/favicon.ico'
+    ]*/
+
     static mappings = {
         "/$controller/$action?/$id?(.$format)?"{
             constraints {

@@ -12,12 +12,12 @@
         <g:render template="searchBox"
                   model="[title:titleType, description: descriptionType, displayActive: titleType]"/>
         <br/>
-        <div class="container">
+%{--        <div class="container">
             <div class="row">
                 <g:each status="i" in="${facets[0].getValues()}" var="facetType">
                     <g:render template="typeBox"  var="typeDoc" collection="${facetType}"/>
                 </g:each>
             </div>
-        </div>
+        </div>--}%
     </body>
 </html>

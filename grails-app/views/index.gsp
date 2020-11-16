@@ -4,16 +4,16 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Bienvenido al portal del Sistema Nacional de Datos Genómicos</title>
+    <title>Busc.AR</title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-85741610-2"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-77715961-6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'UA-85741610-2');
+        gtag('config', 'UA-77715961-6');
     </script>
 
 </head>
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </section>
-        <section>
+%{--        <section>
             <div class="container">
                 <div class="panel-separator"></div>
                 <div class="panel-pane pane-atajos">
@@ -116,9 +116,9 @@
                     </div>
                 </div>
             </div>
-
-
         </section>
+        --}%
+
         <section>
             <div class="container">
                 <h4>También te puede interesar...</h4>

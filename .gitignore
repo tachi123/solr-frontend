@@ -23,6 +23,9 @@ dist/
 target/
 dist/
 
+# Grails
+build/
+
 # JetBrains IDE
 .idea/
 

@@ -13,7 +13,7 @@ grails:
             events: false
 info:
     app:
-        name: 'sndg-interface'
+        name: 'buscador-frontend'
         version: '0.1'
         grailsVersion: '3.3.2'
 spring:
@@ -91,3 +91,12 @@ hibernate:
         queries: false
         use_second_level_cache: false
         use_query_cache: false
+
+dataSource:
+    pooled: true
+    jmxExport: true
+    driverClassName: org.h2.Driver
+    username: sicytarAdmin
+    password: Passe01
+    dbCreate: create-drop
+    url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
