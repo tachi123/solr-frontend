@@ -35,16 +35,17 @@
                                 <div id="buscador" class="row">
                                     <g:form name="searchForm" action="search" controller="solrPublic">
                                         <div class="col-md-3">
-%{--                                            <g:if test="${!(optionsVisible == false)}">
-                                                <g:select name="type"
-                                                          id="type"
-                                                          from="${solrinterface.DocSolrType.findAll {grailsApplication.config.search.sections.enabled.contains(it.getKey())}}"
-                                                          value="${params.type}"
-                                                          noSelection="${['null':'Todos']}"
-                                                          optionKey="id"
+                                            <g:if test="${(grailsApplication.config.solr.queryFieldsOptionsEnabled).equals("true")}">
+%{--                                                noSelection="${['null':'Todos']}"
+                                                </g:each>--}%
+                                                <g:select name="queryField"
+                                                          id="queryField"
+                                                          from="${grails.converters.JSON.parse(grailsApplication.config.solr.queryFieldsOptions)}"
+                                                          optionValue="display"
+                                                          optionKey="value"
                                                           class="form-control"
                                                 />
-                                            </g:if>--}%
+                                            </g:if>
                                         </div>
                                         <div class="col-md-7">
                                             <input placeholder="Buscar..." class="form-control form-text" type="text" id="q" name="q" value="" size="20" maxlength="255">

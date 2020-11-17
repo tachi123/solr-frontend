@@ -19,17 +19,11 @@
                             ${fieldTitle.value}
                         </g:if>
                     </g:each>
-%{--                    <span class="text-warning" tabindex="0" data-toggle="tooltip" title="Validaci&oacute;n pendiente">--}%
-%{--                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>--}%
-%{--                    </span>--}%
-%{--                    <span class="text-primary pull-right">--}%
-%{--                        Ver <i id="fa fa-sign-in" class="fa fa-sign-in icono-4x" data-clipboard-text="fa-sign-in"></i>--}%
-%{--                    </span>--}%
                 </p>
                 <p class="text-muted">
                     <g:each var="fieldVisible" in="${grailsApplication.config.skin.typeBox.otherFields.split(",")}">
                         <g:if test="${myItem.getProperty(fieldVisible) != null}">
-                            <strong>${message(code: 'skin.typeBox.'+fieldVisible, args:[])}: </strong>${myItem.getProperty(fieldVisible)}
+                            <p><strong>${message(code: 'skin.typeBox.'+fieldVisible, args:[])}: </strong>${myItem.getProperty(fieldVisible)}</p>
                         </g:if>
                     </g:each>
                 </p>
@@ -56,7 +50,7 @@
             <p class="text-muted">
                 <g:each var="fieldVisible" in="${grailsApplication.config.skin.listItem.otherFields.split(",")}">
                     <g:if test="${myItem.getProperty(fieldVisible) != null}">
-                        <strong>${message(code: 'skin.listItem.'+fieldVisible, args:[])}: </strong>${myItem.getProperty(fieldVisible)}
+                        <p><strong>${message(code: 'skin.listItem.'+fieldVisible, args:[])}: </strong>${myItem.getProperty(fieldVisible)}</p>
                     </g:if>
                 </g:each>
                 <span class="text-primary pull-right">

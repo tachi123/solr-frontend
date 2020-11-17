@@ -7,11 +7,14 @@
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
+
         <g:set var="titleType" value=" ${message(code: 'skin.coreDisplay',args: [])}"/>
         <g:set var="descriptionType" value="${this.q != null && this.q.size() > 0 ? message(code: 'section.search.terminoBuscado',args: [this.q]) : ''}"/>
         <g:set var="urlImgSection" value="${evaluate('grailsApplication.config.section.DEFAULT.urlImg')}"></g:set>
         <g:set var="colorClass" value="${evaluate('grailsApplication.config.section.DEFAULT.color')}"></g:set>
-        <g:render template="searchBox"
+
+
+            <g:render template="searchBox"
                   model="[colorClass: colorClass,urlImg:urlImgSection,title:titleType, description: descriptionType, displayActive: titleType]"/>
     <div class="container" role="main">
         <div class="row">
@@ -27,8 +30,8 @@
 
 %{--                <g:set var="cantPages" value="this.rows"/>--}%
                 <div class="col-md-3">
-                    <h4 class="text-primary">${this.q}</h4>
-                        <p class="lead"><g:message code="section.search.numFound" args="[this.numFound]"/></p>
+                    <h4 class="text-primary text-center">${this.q}</h4>
+                    <p class="lead text-center"><g:message code="section.search.numFound" args="[this.numFound]"/></p>
                     <g:if test="${this.fq != null && this.fq.size() > 0}">
               %{--          <h4><g:message code="section.search.facetSelected" args="[]"/></h4>--}%
                         <g:render template="facetSelected"  var="facetSelected" collection="${this.fq}"/>

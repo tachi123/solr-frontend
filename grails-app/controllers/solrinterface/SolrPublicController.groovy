@@ -19,12 +19,14 @@ class SolrPublicController {
     private static SolrClient solrCore
     private static String solrFieldList
     private static JSON solrSorts
+    private static String solrQueryFieldsDefault
 /*
     static allowedMethods = [searchRegistros: "GET"]*/
 
     public SolrPublicController() throws MalformedURLException, IOException, SolrServerException {
         solrUrl = grailsApplication.config.solr.url
         solrSorts = JSON.parse(grailsApplication.config.solr.sorts)
+        solrQueryFieldsDefault = grailsApplication.config.solr.queryFieldsDefault
         solrFieldList = grailsApplication.config.solr.fieldList
         solrCore = new HttpSolrClient.Builder(solrUrl).build()
     }
@@ -84,6 +86,10 @@ class SolrPublicController {
         query.set("defType", "edismax");
         query.setFacetMinCount(2);
         query.setIncludeScore(true);
+
+        query.set("qf",solrQueryFieldsDefault);
+        if(params.queryField != null && params.queryField.length() > 0)
+            query.set("qf",params.queryField);
 
         if(params.sort != null && params.sort.size() > 0){
             def order = ORDER.asc
