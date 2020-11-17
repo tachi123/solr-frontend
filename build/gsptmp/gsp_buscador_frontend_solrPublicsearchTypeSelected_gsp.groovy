@@ -103,7 +103,7 @@ printHtmlPart(15)
 printHtmlPart(21)
 invokeTag('render','g',88,['template':("pagination"),'model':([pageCant:pageCant,pageActual:pageActual,cant:3])],-1)
 printHtmlPart(22)
-invokeTag('render','g',91,['template':("item"),'var':("myItem"),'collection':(this.items),'typeItem':(this.typeItem)],-1)
+invokeTag('render','g',90,['template':("item"),'var':("myItem"),'collection':(this.items)],-1)
 printHtmlPart(23)
 invokeTag('render','g',95,['template':("pagination"),'model':([pageCant:pageCant,pageActual:pageActual])],-1)
 printHtmlPart(24)
@@ -122,7 +122,7 @@ protected void init() {
 	this.jspTags = JSP_TAGS
 }
 public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
-public static final long LAST_MODIFIED = 1605194517411L
+public static final long LAST_MODIFIED = 1605624934471L
 public static final String EXPRESSION_CODEC = 'html'
 public static final String STATIC_CODEC = 'none'
 public static final String OUT_CODEC = 'none'

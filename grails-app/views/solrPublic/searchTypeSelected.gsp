@@ -28,7 +28,7 @@
 %{--                <g:set var="cantPages" value="this.rows"/>--}%
                 <div class="col-md-3">
                     <h4 class="text-primary">${this.q}</h4>
-                    <p><g:message code="section.search.numFound" args="[this.numFound]"/></p>
+                        <p class="lead"><g:message code="section.search.numFound" args="[this.numFound]"/></p>
                     <g:if test="${this.fq != null && this.fq.size() > 0}">
               %{--          <h4><g:message code="section.search.facetSelected" args="[]"/></h4>--}%
                         <g:render template="facetSelected"  var="facetSelected" collection="${this.fq}"/>

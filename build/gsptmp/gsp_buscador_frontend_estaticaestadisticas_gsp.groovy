@@ -28,21 +28,15 @@ printHtmlPart(2)
 })
 invokeTag('captureHead','sitemesh',6,[:],1)
 printHtmlPart(2)
-createTagBody(1, {->
-printHtmlPart(3)
-invokeTag('set','g',8,['var':("urlImgSection"),'value':(evaluate('grailsApplication.config.section.ESTADISTICAS.urlImg'))],-1)
-printHtmlPart(3)
-invokeTag('render','g',11,['template':("/solrPublic/searchBox"),'model':([urlImg:urlImgSection,title: this.title, description: '',buscadorEnabled: false, displayActive: this.title])],-1)
-printHtmlPart(4)
-})
-invokeTag('captureBody','sitemesh',1,[:],1)
+createClosureForHtmlPart(3, 1)
+invokeTag('captureBody','sitemesh',8,[:],1)
 }
 public static final Map JSP_TAGS = new HashMap()
 protected void init() {
 	this.jspTags = JSP_TAGS
 }
 public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
-public static final long LAST_MODIFIED = 1605114259436L
+public static final long LAST_MODIFIED = 1605198762186L
 public static final String EXPRESSION_CODEC = 'html'
 public static final String STATIC_CODEC = 'none'
 public static final String OUT_CODEC = 'none'

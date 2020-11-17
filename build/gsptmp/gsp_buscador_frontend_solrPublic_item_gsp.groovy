@@ -1,5 +1,4 @@
 import solrinterface.Item
-import solrinterface.DocSolrType
 import grails.plugins.metadata.GrailsPlugin
 import org.grails.gsp.compiler.transform.LineNumber
 import org.grails.gsp.GroovyPage
@@ -15,58 +14,85 @@ Writer out = getOut()
 Writer expressionOut = getExpressionOut()
 registerSitemeshPreprocessMode()
 printHtmlPart(0)
-invokeTag('set','g',3,['var':("href"),'value':(myItem.django_id != null ? grailsApplication.config.external.link.exactas + solrinterface.DocSolrType.getById(Integer.parseInt(myItem.getType())).getKey().toLowerCase()+'/'+myItem.django_id : '/estatica/'+myItem.id.replace('.','/'))],-1)
-printHtmlPart(0)
-if(true && (typeItem == 'blocks')) {
+invokeTag('set','g',3,['var':("flagValue"),'value':(grailsApplication.config.skin.flag)],-1)
 printHtmlPart(1)
-expressionOut.print(href)
+if(true && (typeItem == 'blocks')) {
 printHtmlPart(2)
-expressionOut.print(myItem.getName())
+expressionOut.print(href)
 printHtmlPart(3)
-if(true && (myItem.marker_exact != null && myItem.marker_exact.size() > 0)) {
+if(true && (flagValue != null && myItem.getProperty(flagValue) != null)) {
 printHtmlPart(4)
-expressionOut.print(myItem.marker_exact)
+invokeTag('image','asset',9,['src':("banderas/"+myItem.getProperty(flagValue).toUpperCase()+".PNG"),'style':("height:1.3em;padding-left: 3px;")],-1)
 printHtmlPart(5)
 }
+printHtmlPart(5)
+for( fieldTitle in (grails.converters.JSON.parse(grailsApplication.config.skin.typeBox.title)) ) {
+printHtmlPart(4)
+if(true && (fieldTitle.type == 'property')) {
 printHtmlPart(6)
+expressionOut.print(myItem.getProperty(fieldTitle.value))
+printHtmlPart(4)
 }
-else {
+printHtmlPart(4)
+if(true && (fieldTitle.type == 'string')) {
+printHtmlPart(6)
+expressionOut.print(fieldTitle.value)
+printHtmlPart(4)
+}
+printHtmlPart(5)
+}
 printHtmlPart(7)
-expressionOut.print(href)
+for( fieldVisible in (grailsApplication.config.skin.typeBox.otherFields.split(",")) ) {
+printHtmlPart(4)
+if(true && (myItem.getProperty(fieldVisible) != null)) {
 printHtmlPart(8)
-expressionOut.print(myItem.getName())
+expressionOut.print(message(code: 'skin.typeBox.'+fieldVisible, args:[]))
 printHtmlPart(9)
-if(true && (myItem.getStatus() == null || myItem.getStatus() == 0)) {
+expressionOut.print(myItem.getProperty(fieldVisible))
+printHtmlPart(4)
+}
+printHtmlPart(5)
+}
 printHtmlPart(10)
 }
 else {
 printHtmlPart(11)
-}
+expressionOut.print(href)
 printHtmlPart(12)
-if(true && (myItem.bold_org_exact != null && myItem.bold_org_exact.size() > 0)) {
+for( fieldTitle in (grails.converters.JSON.parse(grailsApplication.config.skin.listItem.title)) ) {
+printHtmlPart(5)
+if(true && (fieldTitle.type == 'property')) {
+printHtmlPart(4)
+expressionOut.print(myItem.getProperty(fieldTitle.value))
+printHtmlPart(5)
+}
+printHtmlPart(5)
+if(true && (fieldTitle.type == 'string')) {
+printHtmlPart(4)
+expressionOut.print(fieldTitle.value)
+printHtmlPart(5)
+}
 printHtmlPart(13)
-expressionOut.print(myItem.bold_org_exact)
-printHtmlPart(14)
+}
+printHtmlPart(13)
+if(true && (flagValue != null && myItem.getProperty(flagValue) != null)) {
+printHtmlPart(5)
+invokeTag('image','asset',42,['src':("banderas/"+myItem.getProperty(flagValue).toUpperCase()+".PNG"),'style':("height:1.3em;padding-left: 3px;")],-1)
+printHtmlPart(13)
 }
 printHtmlPart(14)
-if(true && (myItem.taxon_exact != null && myItem.taxon_exact.size() > 0)) {
+for( fieldVisible in (grailsApplication.config.skin.listItem.otherFields.split(",")) ) {
+printHtmlPart(5)
+if(true && (myItem.getProperty(fieldVisible) != null)) {
 printHtmlPart(15)
-expressionOut.print(myItem.taxon_exact[0])
-printHtmlPart(14)
+expressionOut.print(message(code: 'skin.listItem.'+fieldVisible, args:[]))
+printHtmlPart(9)
+expressionOut.print(myItem.getProperty(fieldVisible))
+printHtmlPart(5)
 }
-printHtmlPart(14)
-if(true && (myItem.marker_exact != null && myItem.marker_exact.size() > 0)) {
+printHtmlPart(13)
+}
 printHtmlPart(16)
-expressionOut.print(myItem.marker_exact)
-printHtmlPart(14)
-}
-printHtmlPart(14)
-if(true && (myItem.subdivision_exact != null && myItem.subdivision_exact.size() > 0)) {
-printHtmlPart(17)
-expressionOut.print(myItem.subdivision_exact)
-printHtmlPart(14)
-}
-printHtmlPart(18)
 }
 }
 public static final Map JSP_TAGS = new HashMap()
@@ -74,7 +100,7 @@ protected void init() {
 	this.jspTags = JSP_TAGS
 }
 public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
-public static final long LAST_MODIFIED = 1605114259439L
+public static final long LAST_MODIFIED = 1605483587448L
 public static final String EXPRESSION_CODEC = 'html'
 public static final String STATIC_CODEC = 'none'
 public static final String OUT_CODEC = 'none'

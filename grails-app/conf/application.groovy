@@ -1,8 +1,8 @@
 default_configs = [
-        "C:\\data\\$appName\\config\\$appName-application.yml",
-        "C:\\data\\$appName\\config\\$appName-application.properties",
-        "/data/$appName/config/$appName-application.yml",
-        "/data/$appName/config/$appName-application.properties"
+        "C:\\data\\${appName}\\config\\${appName}-application.yml",
+        "C:\\data\\${appName}\\config\\${appName}-application.properties",
+        "/data/${appName}/config/${appName}-application.yml",
+        "/data/${appName}/config/${appName}-application.properties"
 ]
 
 if(!grails.config.locations || !(grails.config.locations instanceof List)) {
