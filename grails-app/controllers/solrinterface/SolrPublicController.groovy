@@ -9,7 +9,7 @@ import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.client.solrj.response.FacetField;
-import org.apache.solr.common.SolrDocument;
+import org.apache.solr.common.SolrDocument
 
 import solrinterface.Item
 
@@ -87,6 +87,7 @@ class SolrPublicController {
         query.setFacetMinCount(2);
         query.setIncludeScore(true);
 
+        if(solrQueryFieldsDefault != null && solrQueryFieldsDefault.length() > 0)
         query.set("qf",solrQueryFieldsDefault);
         if(params.queryField != null && params.queryField.length() > 0)
             query.set("qf",params.queryField);

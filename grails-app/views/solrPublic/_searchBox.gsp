@@ -8,7 +8,7 @@
     <header>
         <div class="panel-pane pane-imagen-destacada">
             <div class="pane-content">
-                <section class="jumbotron ${colorClass != null && colorClass.length()>0 ? 'bg-'+colorClass : ''}" style="background-image: url('${resource(dir: "images", file: urlImg != null ? urlImg : grailsApplication.config.section.search.img.default)}');">
+                <section class="jumbotron" style="${urlImgSection != null && urlImgSection.length() > 0 ? 'background-image: url(resource(dir: "images", file: '+urlImgSection+' ) ': 'background-color: '+color};">
                     <div class="jumbotron_bar">
                         <div class="container">
                             <div class="row">

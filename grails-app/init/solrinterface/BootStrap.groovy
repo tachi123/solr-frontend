@@ -17,7 +17,6 @@ class BootStrap {
             def Locale locale = Locale.getDefault()
             if(filePropertiesI18n.language.length() > 0)
                 locale = Locale.forLanguageTag(filePropertiesI18n.language)
-
             for(mapLine in fileBasename.split("\n")){
                 if(mapLine.length()>0 && !mapLine.substring(0,1).equals("//")){
                     Message mesgToInsert = new Message()

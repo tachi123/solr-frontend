@@ -6,7 +6,7 @@
 <g:if test="${typeItem == 'blocks'}">
     <div class="col-xs-12 col-sm-6 col-md-4">
         <a class="panel panel-default"  href="${href}">
-            <div class="panel-body" style="overflow: hidden">
+            <div class="panel-body" style="overflow: hidden;height: 175px; border-radius: 4px;">
                 <p>
                     <g:if test="${flagValue != null && myItem.getProperty(flagValue) != null}">
                         <asset:image src="${"banderas/"+myItem.getProperty(flagValue).toUpperCase()+".PNG"}" style="height:1.3em;padding-left: 3px;"/>

@@ -9,6 +9,8 @@ class DatabaseMessageSource extends AbstractMessageSource  {
     def messageBundleMessageSource
 
     protected MessageFormat resolveCode(String code, Locale locale) {
+        if(locale.getLanguage().equals('es'))
+            locale = Locale.forLanguageTag('es-AR')
         Message msg = Message.findByCodeAndLocale(code, locale)
         def format = null
         if (msg) {

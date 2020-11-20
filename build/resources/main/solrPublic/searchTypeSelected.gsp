@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="layout" content="main" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
@@ -11,11 +12,11 @@
         <g:set var="titleType" value=" ${message(code: 'skin.coreDisplay',args: [])}"/>
         <g:set var="descriptionType" value="${this.q != null && this.q.size() > 0 ? message(code: 'section.search.terminoBuscado',args: [this.q]) : ''}"/>
         <g:set var="urlImgSection" value="${evaluate('grailsApplication.config.section.DEFAULT.urlImg')}"></g:set>
-        <g:set var="colorClass" value="${evaluate('grailsApplication.config.section.DEFAULT.color')}"></g:set>
+        <g:set var="color" value="${evaluate('grailsApplication.config.section.DEFAULT.color')}"></g:set>
 
 
             <g:render template="searchBox"
-                  model="[colorClass: colorClass,urlImg:urlImgSection,title:titleType, description: descriptionType, displayActive: titleType]"/>
+                  model="[color: color,urlImg:urlImgSection,title:titleType, description: descriptionType, displayActive: titleType]"/>
     <div class="container" role="main">
         <div class="row">
             <g:form name="searchForm" action="search" controller="solrPublic">
