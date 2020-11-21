@@ -6,7 +6,7 @@
 </head>
 <body>
 %{--	<g:set var="urlImgSection" value="${evaluate('grailsApplication.config.section.CENTROS.urlImg')}"></g:set>
-	<g:render template="/solrPublic/searchBox"
+	<g:render template="/search/searchBox"
 			  model="[urlImg:urlImgSection,title: this.title, description: '',buscadorEnabled: false, displayActive: this.title]"
 	/>
 	<main role="main">

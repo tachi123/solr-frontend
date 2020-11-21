@@ -13,27 +13,29 @@ import org.apache.solr.common.SolrDocument
 
 import solrinterface.Item
 
-class SolrPublicController {
+class SearchController {
 
     private static String solrUrl
     private static SolrClient solrCore
     private static String solrFieldList
     private static JSON solrSorts
     private static String solrQueryFieldsDefault
+    private static String solrFilterQueries
 /*
     static allowedMethods = [searchRegistros: "GET"]*/
 
-    public SolrPublicController() throws MalformedURLException, IOException, SolrServerException {
+    public SearchController() throws MalformedURLException, IOException, SolrServerException {
         solrUrl = grailsApplication.config.solr.url
         solrSorts = JSON.parse(grailsApplication.config.solr.sorts)
         solrQueryFieldsDefault = grailsApplication.config.solr.queryFieldsDefault
         solrFieldList = grailsApplication.config.solr.fieldList
+        solrFilterQueries = grailsApplication.config.solr.filterQueries
         solrCore = new HttpSolrClient.Builder(solrUrl).build()
     }
 
     def index() {}
 
-    def search(Integer max) {
+    def results(Integer max) {
 
         String view
 
@@ -54,8 +56,9 @@ class SolrPublicController {
                 String numFound = documents.getNumFound();
                 List<FacetField> facets = rsp.getFacetFields();
 
-                //ESTO ASI SACO EL TYPE DE FACETSELECTED
-                query.removeFilterQuery("type:" + params.type)
+                //ESTO ASÍ SACO LOS POSIBLES FIELDQUERIES POR DEFECTO
+                for(String fieldQueryDefault in (grailsApplication.config.solr.filterQueries).split('\\|'))
+                    query.removeFilterQuery(fieldQueryDefault)
 
                 render view: view,
                         model: [items   : items,
@@ -102,8 +105,11 @@ class SolrPublicController {
         if(params.pageNumber != null && Integer.parseInt(params.pageNumber) > 0)
             start = (Integer.parseInt(params.pageNumber)-1)*rows
         query.setStart(start)
+
         if (params.fqstring != null && params.fqstring.size() > 0)
             query.setFilterQueries(params.fqstring.split('\\|'))
+        for(String fieldQueryDefault in (grailsApplication.config.solr.filterQueries).split('\\|'))
+            query.addFilterQuery(fieldQueryDefault)
         if (params.newfq != null && params.newfq.size() > 0 && !params.fqstring.contains(params.newfq))
             query.addFilterQuery(params.newfq)
         if (params.delfq != null && params.delfq.size() > 0)

@@ -10,7 +10,7 @@
 				<section>
 					<ul class="menu nav">
 						<li><a href="/">INICIO</a></li>
-						<li><a href="/feedback">FEEDBACK</a></li>
+						<li><a href="https://datos.mincyt.gob.ar/#/contacto">FEEDBACK</a></li>
 					</ul>
 				</section>
 			</div>

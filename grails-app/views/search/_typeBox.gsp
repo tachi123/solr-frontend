@@ -1,7 +1,7 @@
 <%@ page import="solrinterface.DocSolrType;" contentType="text/html;charset=UTF-8" %>
 <g:if test="${grailsApplication.config.search.sections.enabled.contains(solrinterface.DocSolrType.getById(Integer.parseInt(typeDoc.getName())).getKey())}">
     <div class="col-xs-12 col-sm-4 col-md-4">
-        <g:link controller="solrPublic" action="search" params="[type:typeDoc.getName(),q:this.q]" class="panel panel-default">
+        <g:link controller="search" action="results" params="[type:typeDoc.getName(), q:this.q]" class="panel panel-default">
             <div class="panel-body" style="min-height: 8.5em;">
                 <div class="media">
                     <div class="media-body">

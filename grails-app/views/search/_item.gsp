@@ -9,7 +9,7 @@
             <div class="panel-body" style="overflow: hidden;height: 175px; border-radius: 4px;">
                 <p>
                     <g:if test="${flagValue != null && myItem.getProperty(flagValue) != null}">
-                        <asset:image src="${"banderas/"+myItem.getProperty(flagValue).toUpperCase()+".PNG"}" style="height:1.3em;padding-left: 3px;"/>
+                        <asset:image src="${"banderas/"+ myItem.getProperty(flagValue).toUpperCase()+".PNG"}" style="height:1.3em;padding-left: 3px;"/>
                     </g:if>
                     <g:each var="fieldTitle" in="${grails.converters.JSON.parse(grailsApplication.config.skin.typeBox.title)}">
                         <g:if test="${fieldTitle.type == 'property'}">

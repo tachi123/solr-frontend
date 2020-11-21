@@ -3,7 +3,7 @@ package solrinterface
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
-class SolrPublicControllerSpec extends Specification implements ControllerUnitTest<SolrPublicController> {
+class SearchControllerSpec extends Specification implements ControllerUnitTest<SearchController> {
 
     def setup() {
     }

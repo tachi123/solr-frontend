@@ -33,7 +33,7 @@
                             </div>
                             <g:if test="${buscadorEnabled != false}">
                                 <div id="buscador" class="row">
-                                    <g:form name="searchForm" action="search" controller="solrPublic">
+                                    <g:form name="searchForm" action="results" controller="search">
                                         <div class="col-md-3">
                                             <g:if test="${(grailsApplication.config.solr.queryFieldsOptionsEnabled).equals("true")}">
 %{--                                                noSelection="${['null':'Todos']}"

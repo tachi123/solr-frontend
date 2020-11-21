@@ -3,7 +3,7 @@ package solrinterface
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class RecursoSpec extends Specification implements DomainUnitTest<Recurso> {
+class RecursoSpec extends Specification  {
 
     def setup() {
     }

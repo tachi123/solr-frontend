@@ -19,7 +19,7 @@
                   model="[color: color,urlImg:urlImgSection,title:titleType, description: descriptionType, displayActive: titleType]"/>
     <div class="container" role="main">
         <div class="row">
-            <g:form name="searchForm" action="search" controller="solrPublic">
+            <g:form name="searchForm" action="results" controller="search">
                 <g:hiddenField name="q" value="${this.q}"></g:hiddenField>
                 <g:hiddenField name="type" value="${this.type}"></g:hiddenField>
                 <g:hiddenField name="rows" value="${this.rows}"></g:hiddenField>
