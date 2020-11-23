@@ -1,6 +1,6 @@
-#Wed, 11 Nov 2020 14:20:07 -0300
+#Mon, 23 Nov 2020 14:27:16 -0300
 
 info.app.version=0.1
-info.app.name=buscador-frontend
+info.app.name=buscadorRaices
 grails.env=production
 info.app.grailsVersion=3.3.2

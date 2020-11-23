@@ -49,16 +49,16 @@ printHtmlPart(8)
 expressionOut.print(message(code: 'skin.typeBox.'+fieldVisible, args:[]))
 printHtmlPart(9)
 expressionOut.print(myItem.getProperty(fieldVisible))
-printHtmlPart(4)
+printHtmlPart(10)
 }
 printHtmlPart(5)
 }
-printHtmlPart(10)
+printHtmlPart(11)
 }
 else {
-printHtmlPart(11)
-expressionOut.print(href)
 printHtmlPart(12)
+expressionOut.print(href)
+printHtmlPart(13)
 for( fieldTitle in (grails.converters.JSON.parse(grailsApplication.config.skin.listItem.title)) ) {
 printHtmlPart(5)
 if(true && (fieldTitle.type == 'property')) {
@@ -72,27 +72,27 @@ printHtmlPart(4)
 expressionOut.print(fieldTitle.value)
 printHtmlPart(5)
 }
-printHtmlPart(13)
-}
-printHtmlPart(13)
-if(true && (flagValue != null && myItem.getProperty(flagValue) != null)) {
-printHtmlPart(5)
-invokeTag('image','asset',42,['src':("banderas/"+myItem.getProperty(flagValue).toUpperCase()+".PNG"),'style':("height:1.3em;padding-left: 3px;")],-1)
-printHtmlPart(13)
+printHtmlPart(14)
 }
 printHtmlPart(14)
+if(true && (flagValue != null && myItem.getProperty(flagValue) != null)) {
+printHtmlPart(5)
+invokeTag('image','asset',44,['src':("banderas/"+myItem.getProperty(flagValue).toUpperCase()+".PNG"),'style':("height:1.3em;padding-left: 3px;")],-1)
+printHtmlPart(14)
+}
+printHtmlPart(15)
 for( fieldVisible in (grailsApplication.config.skin.listItem.otherFields.split(",")) ) {
 printHtmlPart(5)
 if(true && (myItem.getProperty(fieldVisible) != null)) {
-printHtmlPart(15)
+printHtmlPart(16)
 expressionOut.print(message(code: 'skin.listItem.'+fieldVisible, args:[]))
 printHtmlPart(9)
 expressionOut.print(myItem.getProperty(fieldVisible))
-printHtmlPart(5)
+printHtmlPart(17)
 }
-printHtmlPart(13)
+printHtmlPart(14)
 }
-printHtmlPart(16)
+printHtmlPart(18)
 }
 }
 public static final Map JSP_TAGS = new HashMap()
@@ -100,7 +100,7 @@ protected void init() {
 	this.jspTags = JSP_TAGS
 }
 public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
-public static final long LAST_MODIFIED = 1605483587448L
+public static final long LAST_MODIFIED = 1605884802634L
 public static final String EXPRESSION_CODEC = 'html'
 public static final String STATIC_CODEC = 'none'
 public static final String OUT_CODEC = 'none'

@@ -13,19 +13,17 @@ Writer out = getOut()
 Writer expressionOut = getExpressionOut()
 registerSitemeshPreprocessMode()
 printHtmlPart(0)
-invokeTag('image','asset',12,['src':("logo_sistemas_nacionales.png"),'height':("50px"),'alt':("Sistema Nacional de Datos Genómicos")],-1)
+invokeTag('image','asset',12,['src':("01_logotipo.png"),'height':("50px"),'alt':("Portal de Datos Científicos")],-1)
 printHtmlPart(1)
-expressionOut.print(grailsApplication.config.external.link.blast)
+invokeTag('image','asset',13,['src':("logo_sicytar_ok.svg"),'height':("50px"),'alt':("SICYTAR")],-1)
 printHtmlPart(2)
-expressionOut.print(grailsApplication.config.external.link.faq)
-printHtmlPart(3)
 }
 public static final Map JSP_TAGS = new HashMap()
 protected void init() {
 	this.jspTags = JSP_TAGS
 }
 public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
-public static final long LAST_MODIFIED = 1605114259442L
+public static final long LAST_MODIFIED = 1605994789454L
 public static final String EXPRESSION_CODEC = 'html'
 public static final String STATIC_CODEC = 'none'
 public static final String OUT_CODEC = 'none'
