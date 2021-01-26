@@ -1,7 +1,7 @@
 <%@ page import="solrinterface.Item;" contentType="text/html;charset=UTF-8" %>
 
 <g:set var="flagValue" value="${grailsApplication.config.skin.flag}"/>
-%{--<g:set var="href" value="${myItem.django_id != null ? grailsApplication.config.external.link.exactas + solrinterface.DocSolrType.getById(Integer.parseInt(myItem.getType())).getKey().toLowerCase()+'/'+myItem.django_id : '/estatica/'+myItem.id.replace('.','/')}"></g:set>--}%
+<g:set var="href" value="${grailsApplication.config.item.externalView + myItem.getProperty(grailsApplication.config.item.identificador)}"></g:set>
 
 <g:if test="${typeItem == 'blocks'}">
     <div class="col-xs-12 col-sm-6 col-md-4">
