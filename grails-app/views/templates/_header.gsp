@@ -1,4 +1,25 @@
 <header>
+	<nav class="navbar navbar-top navbar-default bg-celeste-argentina" role="navigation">
+		<div class="container">
+			<div>
+				<div class="navbar-header">
+					<a class="navbar-brand" href="https://www.argentina.gob.ar/" target="_blank" aria-label="Argentina.gob.ar Presidencia de la Nación">
+						<asset:image src="argentinagob-2.svg" height="50px" alt="Argentina.gob.ar"/>
+					</a>
+					<a class="btn btn-mi-argentina btn-login visible-xs" href="https://argob.github.io/proyectos/mi-argentina/v3/"><i class="icono-arg-mi-argentina fa-fw"></i></a>
+					<a class="btn bg-white btn-login visible-xs" href="https://argob.github.io/poncho/plantillas/headers-y-footers/header-footer-v1.html#" onclick="$(&#39;.navbar.navbar-top&#39;).addClass(&#39;state-search&#39;);">
+						<span class="fa fa-search fa-fw"></span>
+					</a>
+				</div>
+				<div class="nav navbar-nav navbar-right hidden-xs">
+					<a href="https://mi.argentina.gob.ar"  target="_blank" class="dropdown-toggle btn btn-mi-argentina hidden-xs bg-white" aria-label="Ingresar a Mi Argentina"> miArgentina</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>
+
+%{--<header>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -19,7 +40,7 @@
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
-</header>
+</header>--}%
 
 %{--  <li><a href="/">INICIO</a></li>
   <li><a href="${grailsApplication.config.external.link.blast}">BLAST</a></li>

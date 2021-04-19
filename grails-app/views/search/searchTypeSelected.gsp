@@ -17,6 +17,7 @@
 
             <g:render template="searchBox"
                   model="[color: color,urlImg:urlImgSection,title:titleType, description: descriptionType, displayActive: titleType]"/>
+        <br/>
     <div class="container" role="main">
         <div class="row">
             <g:form name="searchForm" action="results" controller="search">

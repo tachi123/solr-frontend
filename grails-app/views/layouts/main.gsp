@@ -13,12 +13,14 @@
     <asset:javascript src="bootstrap.min.js"/>
 
     <asset:stylesheet src="bootstrap.css"/>
-    <asset:stylesheet src="bootstrap-theme.css"/>
+%{--    <asset:stylesheet src="bootstrap-theme.css"/>--}%
     <asset:stylesheet src="poncho.min.css"/>
+    <asset:stylesheet src="argentina.css"/>
     <asset:stylesheet src="roboto-fontface.css"/>
     <asset:stylesheet src="icono-arg.css"/>
     <asset:stylesheet src="font-awesome.min.css"/>
 
+    <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" media="all" rel="stylesheet" type="text/css">
     <g:layoutHead/>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->

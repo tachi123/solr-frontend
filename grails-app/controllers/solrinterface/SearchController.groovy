@@ -3,7 +3,8 @@ package solrinterface
 import grails.converters.JSON
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
-import org.apache.solr.client.solrj.SolrQuery.ORDER;
+import org.apache.solr.client.solrj.SolrQuery.ORDER
+import org.apache.solr.client.solrj.SolrResponse;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -74,6 +75,16 @@ class SearchController {
                                 q       : query.getQuery().equals("text:*") ? "" : query.getQuery()]
             }
     }
+
+    def getNumfound(Integer max) {
+
+        SolrQuery query = buildQuery(params)
+        query.setRows(0)
+        query.setFields('numFound')
+
+        return solrCore.query(query).getResults().getNumFound();
+    }
+
 
     def buildQuery(params) {
 

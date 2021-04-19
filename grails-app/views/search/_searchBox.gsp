@@ -8,7 +8,7 @@
     <header>
         <div class="panel-pane pane-imagen-destacada">
             <div class="pane-content">
-                <section class="jumbotron" style="${urlImgSection != null && urlImgSection.length() > 0 ? 'background-image: url(resource(dir: "images", file: '+urlImgSection+' ) ': 'background-color: '+color};">
+                <section class="jumbotron" style="${urlImgSection != null && urlImgSection.length() > 0 ? "background-image: url('${resource(dir: "assets", file: urlImgSection )}')" : 'background-color: '+color};">
                     <div class="jumbotron_bar">
                         <div class="container">
                             <div class="row">
@@ -63,6 +63,5 @@
             </div>
         </div>
     </header>
-    <br/>
 </body>
 </html>
