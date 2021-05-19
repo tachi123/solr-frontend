@@ -65,7 +65,7 @@ dependencies {
     testRuntime "org.seleniumhq.selenium:selenium-api:3.6.0"
 
     compile 'org.grails.plugins:external-config:1.1.1'
-    profile "org.grails.profiles:web-plugin"
+/*    profile "org.grails.profiles:web-plugin"*/
 
 /*    compile "javax.servlet:servlet-api:2.5"*/
 

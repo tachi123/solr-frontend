@@ -6,7 +6,7 @@ public class Item{
 
     static mapWith = "none"
 
-    @Field Integer Identificador
+    @Field String Identificador
 
     def dynamicProperties = [:]
     //setter
