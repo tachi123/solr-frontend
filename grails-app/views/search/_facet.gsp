@@ -17,15 +17,15 @@
             <div class="panel-heading">
                 <g:set var="facetDisplay" value="${message(code: 'facet.'+myFacet.getName()+'.display', args:[])}"></g:set>
                 <h4 onclick="expandFacet('${myFacet.getName()}')">
-                    <i class="fa fa-list"></i>
+                    <i class="fa fa-list text-personalizado-secundario"></i>
                     <a class="FieldName link">
                         <span>
                             ${facetDisplay != null && facetDisplay.size()>0 ? facetDisplay : myFacet.getName()}
                         </span>
-                        <span class="pull-right">
+                        <span class="pull-right text-personalizado">
                             <i id="${myFacet.getName()}+"  class="fa fa-plus-circle"></i>
                         </span>
-                        <span class="pull-right">
+                        <span class="pull-right text-personalizado">
                             <i id="${myFacet.getName()}-" class="fa fa-minus-circle" style="display: none;"></i>
                         </span>
                     </a>

@@ -20,11 +20,12 @@
 
     <g:set var="titleType" value=" ${message(code: 'skin.coreDisplay',args: [])}"/>
     <g:set var="descriptionType" value=" ${message(code: 'skin.description',args: [])}"/>
-    <g:set var="urlImgSection" value="${evaluate('grailsApplication.config.section.DEFAULT.urlImg')}"></g:set>
-    <g:set var="color" value="${evaluate('grailsApplication.config.section.DEFAULT.color')}"></g:set>
+    <g:set var="backgroundImage" value="${evaluate('grailsApplication.config.banner.background.urlImage')}"/>
+    <g:set var="backgroundColor" value="${evaluate('grailsApplication.config.banner.background.color')}"/>
+    <g:set var="bannerImage" value="${evaluate('grailsApplication.config.banner.image')}"/>
     <g:set var="counter" value="${new solrinterface.SearchController().getNumfound()}" />
     <g:render template="search/searchBox"
-              model="[color: color,urlImg:urlImgSection,title:titleType, description: descriptionType, displayActive: titleType]"/>
+              model="[bannerImage: bannerImage,backgroundColor: backgroundColor,backgroundImage:backgroundImage,title:titleType, description: descriptionType, displayActive: titleType]"/>
 
     <main role="main">
         <section class="bg-gray">

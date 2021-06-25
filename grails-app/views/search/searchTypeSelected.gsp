@@ -11,12 +11,13 @@
 
         <g:set var="titleType" value=" ${message(code: 'skin.coreDisplay',args: [])}"/>
         <g:set var="descriptionType" value="${this.q != null && this.q.size() > 0 ? message(code: 'section.search.terminoBuscado',args: [this.q]) : ''}"/>
-        <g:set var="urlImgSection" value="${evaluate('grailsApplication.config.section.DEFAULT.urlImg')}"></g:set>
-        <g:set var="color" value="${evaluate('grailsApplication.config.section.DEFAULT.color')}"></g:set>
+        <g:set var="backgroundImage" value="${evaluate('grailsApplication.config.banner.background.urlImage')}"/>
+        <g:set var="backgroundColor" value="${evaluate('grailsApplication.config.banner.background.color')}"/>
+        <g:set var="bannerImage" value="${evaluate('grailsApplication.config.banner.image')}"/>
 
 
             <g:render template="searchBox"
-                  model="[color: color,urlImg:urlImgSection,title:titleType, description: descriptionType, displayActive: titleType]"/>
+                  model="[bannerImage: bannerImage,backgroundColor: backgroundColor,backgroundImage:backgroundImage,title:titleType, description: descriptionType, displayActive: titleType]"/>
         <br/>
     <div class="container" role="main">
         <div class="row">
@@ -47,13 +48,13 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <div class="btn-group">
-                                <button type="button" class="btn-link dropdown-toggle" data-toggle="dropdown">
+                                <button type="button" class="btn-link dropdown-toggle btn-personalizado" data-toggle="dropdown">
                                     Ordenar por <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
                                 </button>
                                 <ul class="dropdown-menu" style="min-width: 0">
                                     <g:each var="sortField" in="${grails.converters.JSON.parse(grailsApplication.config.solr.sorts)}">
                                         <li>
-                                            <button type="submit" class="btn-link" onclick="injectHiddenField('sort', '${sortField.value}')">
+                                            <button type="submit" class="btn-link btn-personalizado" onclick="injectHiddenField('sort', '${sortField.value}')">
                                                 <a>${sortField.display}</a>
                                             </button>
                                         </li>
@@ -62,13 +63,13 @@
                             </div>
                             |
                             <div class="btn-group">
-                                <button type="button" class="btn-link dropdown-toggle" data-toggle="dropdown">
+                                <button type="button" class="btn-link dropdown-toggle btn-personalizado" data-toggle="dropdown">
                                     <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
                                 </button>
                                 <ul class="dropdown-menu" style="min-width: 0">
                                     <g:each var="rowField" in="${grails.converters.JSON.parse(grailsApplication.config.solr.rows)}">
                                         <li>
-                                            <button type="submit" class="btn-link" onclick="injectHiddenField('rows', '${rowField.value}');injectHiddenField('typeItem', 'list')">
+                                            <button type="submit" class="btn-link btn-personalizado" onclick="injectHiddenField('rows', '${rowField.value}');injectHiddenField('typeItem', 'list')">
                                                 <a>${rowField.display}</a>
                                             </button>
                                         </li>
@@ -76,13 +77,13 @@
                                 </ul>
                             </div>
                             <div class="btn-group">
-                                <button type="button" class="btn-link dropdown-toggle" data-toggle="dropdown">
+                                <button type="button" class="btn-link dropdown-toggle btn-personalizado" data-toggle="dropdown">
                                     <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
                                 </button>
                                 <ul class="dropdown-menu" style="min-width: 0">
                                     <g:each var="rowField" in="${grails.converters.JSON.parse(grailsApplication.config.solr.rows)}">
                                         <li>
-                                            <button type="submit" class="btn-link" onclick="injectHiddenField('rows', '${rowField.value}');injectHiddenField('typeItem', 'blocks')">
+                                            <button type="submit" class="btn-link btn-personalizado" onclick="injectHiddenField('rows', '${rowField.value}');injectHiddenField('typeItem', 'blocks')">
                                                 <a>${rowField.display}</a>
                                             </button>
                                         </li>

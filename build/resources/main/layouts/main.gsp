@@ -33,6 +33,29 @@
         gtag('config', ${grailsApplication.config.googleAnalitycsCode});
     </script>
 
+    <style>
+        .text-personalizado{
+            color: #009ADA!important;
+        }
+        .btn-personalizado{
+            color: #009ADA;
+            background-color: #fff;
+            border-color: transparent!important;
+            font-weight: normal;
+            border-radius: 0;
+        }
+        .btn-personalizado:active{
+            color: #201815;
+        }
+        .panel-personalizado{
+            border: solid 1px #E5B449;
+            border-radius: 10px;
+            box-shadow: none;
+            color: #201815;
+            display: block;
+            text-decoration: none!important;
+        }
+    </style>
 </head>
 <body>
 

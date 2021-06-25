@@ -7,7 +7,7 @@
 
 <g:if test="${typeItem == 'blocks'}">
     <div class="col-xs-12 col-sm-6 col-md-4">
-        <a class="panel panel-default"  href="${href}">
+        <a class="panel panel-default panel-personalizado"  href="${href}">
             <div class="panel-body" style="overflow: hidden;height: 175px; border-radius: 4px;">
                 <p>
                     <g:if test="${flagValue != null && myItem.getProperty(flagValue) != null}">
@@ -34,7 +34,7 @@
     </div>
 </g:if>
 <g:else>
-    <a class="panel panel-default"  href="${href}">
+    <a class="panel panel-default panel-personalizado"  href="${href}">
         <div class="panel-body" style="padding-bottom: 0px;">
             <h3 style="margin: 0px; display:inline-flex;">
                 <g:each var="fieldTitle" in="${grails.converters.JSON.parse(grailsApplication.config.skin.listItem.title)}">
@@ -55,10 +55,10 @@
                         <p><strong>${message(code: 'skin.listItem.'+fieldVisible, args:[])}: </strong>${myItem.getProperty(fieldVisible).toString().replace("[","").replace("]","")}</p>
                     </g:if>
                 </g:each>
-                <span class="text-primary pull-right">
+                <span class="text-primary pull-right text-personalizado">
                     Ver <i id="fa fa-sign-in" class="fa fa-sign-in icono-4x" data-clipboard-text="fa-sign-in"></i>
                 </span>
             </p>
-              </div>
+         </div>
     </a>
 </g:else>

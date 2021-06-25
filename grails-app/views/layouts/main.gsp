@@ -33,6 +33,40 @@
         gtag('config', ${grailsApplication.config.googleAnalitycsCode});
     </script>
 
+    <style>
+        .text-personalizado{
+            color: #009ADA!important;
+        }
+        .text-personalizado-secundario{
+            color: #E5B449!important;
+        }
+        .btn-primary-personalizado{
+            color: white!important;
+            background-color: #009ADA;
+        }
+        .btn-personalizado{
+            color: #009ADA;
+            background-color: #fff;
+            border-color: transparent!important;
+            font-weight: normal;
+            border-radius: 0;
+        }
+        .btn-personalizado > a{
+            text-decoration: none!important;
+            color: #009ADA;
+        }
+        .btn-personalizado:active,.btn-personalizado[disabled]{
+            color: #201815;
+        }
+        .panel-personalizado{
+            border: solid 1px #E5B449;
+            border-radius: 10px;
+            box-shadow: none;
+            color: #201815;
+            display: block;
+            text-decoration: none!important;
+        }
+    </style>
 </head>
 <body>
 
