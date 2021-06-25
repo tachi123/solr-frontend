@@ -37,6 +37,13 @@
         .text-personalizado{
             color: #009ADA!important;
         }
+        .text-personalizado-secundario{
+            color: #E5B449!important;
+        }
+        .btn-primary-personalizado{
+            color: white!important;
+            background-color: #009ADA;
+        }
         .btn-personalizado{
             color: #009ADA;
             background-color: #fff;
@@ -44,7 +51,11 @@
             font-weight: normal;
             border-radius: 0;
         }
-        .btn-personalizado:active{
+        .btn-personalizado > a{
+            text-decoration: none!important;
+            color: #009ADA;
+        }
+        .btn-personalizado:active,.btn-personalizado[disabled]{
             color: #201815;
         }
         .panel-personalizado{

@@ -85,6 +85,17 @@ class SearchController {
         return solrCore.query(query).getResults().getNumFound();
     }
 
+    def getFacetsForType(Integer max,String facet) {
+
+        SolrQuery query = buildQuery(params)
+        query.remove('facet.field')
+        query.addFacetField(facet);
+        query.setFacetLimit(max)
+        query.setRows(0)
+        def asdfadsf = solrCore.query(query).getFacetFields().get(0).getValues()
+        return asdfadsf;
+    }
+
 
     def buildQuery(params) {
 

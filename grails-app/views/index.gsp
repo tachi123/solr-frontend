@@ -42,6 +42,13 @@
                 </div>
             </div>
         </section>
+    <g:if test="${grailsApplication.config.box.status.toBoolean()}">
+        <div class="container">
+            <div class="row">
+                <g:render template="/search/typeBox" var="typeValue" model="[facet: grailsApplication.config.box.facetName]" collection="${new solrinterface.SearchController().getFacetsForType(Integer.parseInt(grailsApplication.config.box.facetLimit),grailsApplication.config.box.facetName)}"/>
+            </div>
+        </div>
+    </g:if>
         <section>
             <div class="container">
                 <h4>También te puede interesar...</h4>
